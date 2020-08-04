@@ -43,7 +43,33 @@ public class EarthQuakeClient2 {
         } 
     }
     
-    public void testMatchAllFilter(){}
+    public void testMatchAllFilter(){
+        EarthQuakeParser parser = new EarthQuakeParser(); 
+        String source = "data/nov20quakedatasmall.atom";
+        ArrayList<QuakeEntry> list  = parser.read(source);         
+        System.out.println("read data for "+list.size()+" quakes");
+        /*
+        for(QuakeEntry qe : list){
+            System.out.println(qe);
+        }
+        */
+        MatchAllFilter maf = new MatchAllFilter();
+        Filter magFilter = new MagnitudeFilter(0.0, 2.0);
+        Filter depFilter = new DepthFilter(-100000.0, -10000.0);
+        Filter prFilter = new PhraseFilter("any", "a");
+        
+        maf.addFilter(magFilter);
+        maf.addFilter(depFilter);
+        maf.addFilter(prFilter);
+        
+        //Now we will apply all the filters to our list
+        list = filter(list, maf);
+        
+        //Print our list
+        for(QuakeEntry qe : list){
+            System.out.println(qe);
+        }
+    }
 
     public void createCSV() {
         EarthQuakeParser parser = new EarthQuakeParser();

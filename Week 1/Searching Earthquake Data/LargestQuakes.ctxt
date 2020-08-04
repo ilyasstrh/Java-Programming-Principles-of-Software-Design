@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=LargestQuakes
+comment0.text=\r\n\ Write\ a\ description\ of\ LargestQuakes\ here.\r\n\ \r\n\ @author\ (ilyasstrh)\ \r\n\ @version\ (7/19/2020\ 3\:36\ AM)\r\n
+comment1.params=
+comment1.target=void\ findLargestQuake()
+comment2.params=data
+comment2.target=int\ indexOfLargest(java.util.ArrayList)
+comment2.text=\r\n\ Returns\ the\ index\ location\ in\ data\ of\ the\ earthquake\ with\ the\ largest\ magnitude\r\n
+comment3.params=data\ howMany
+comment3.target=java.util.ArrayList\ getLargest(java.util.ArrayList,\ int)
+numComments=4

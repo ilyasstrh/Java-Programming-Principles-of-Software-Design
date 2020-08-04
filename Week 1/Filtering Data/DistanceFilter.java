@@ -8,10 +8,12 @@
 public class DistanceFilter implements Filter {
     private Location location;
     private double maxDistance;
+    private String name;
     
     public DistanceFilter(Location location, double maxDistance){
         this.location = location;
         this.maxDistance = maxDistance;
+        this.name = "Distance";
     }
     
     @Override
@@ -23,6 +25,11 @@ public class DistanceFilter implements Filter {
         }else{
             return false;
         }
+    }
+    
+    @Override
+    public String getName(){
+        return name;
     }
 
 }

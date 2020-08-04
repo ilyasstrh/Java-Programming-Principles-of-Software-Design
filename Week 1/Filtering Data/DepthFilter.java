@@ -8,10 +8,12 @@
 public class DepthFilter implements Filter {
     private double minDepth;
     private double maxDepth;
+    private String name;
     
     public DepthFilter(double minDepth, double maxDepth){
         this.minDepth = minDepth;
         this.maxDepth = maxDepth;
+        this.name = "Depth";
     }
     
     @Override
@@ -22,4 +24,10 @@ public class DepthFilter implements Filter {
             return false;
         }
     }
+    
+    @Override
+    public String getName(){
+        return name;
+    }
+
 }

@@ -20,6 +20,17 @@ public class MatchAllFilter implements Filter {
         }
         return true;
     }
+    
+    @Override
+    public String getName(){
+        String names = "";
+        for(Filter f : filters){
+            //add the name of each filter to names
+            names += " "+f.getName();
+  
+        }
+        return names;
+    }
 
 
 }

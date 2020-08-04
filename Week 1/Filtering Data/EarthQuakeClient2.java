@@ -69,6 +69,34 @@ public class EarthQuakeClient2 {
         for(QuakeEntry qe : list){
             System.out.println(qe);
         }
+        
+        //print out all the Filter names used. 
+        System.out.println("Filters used are: " +maf.getName());
+    }
+    
+    public void testMatchAllFilter2(){
+        EarthQuakeParser parser = new EarthQuakeParser(); 
+        String source = "data/nov20quakedatasmall.atom";
+        ArrayList<QuakeEntry> list  = parser.read(source);         
+        System.out.println("read data for "+list.size()+" quakes");
+
+        MatchAllFilter maf = new MatchAllFilter();
+        Filter magFilter = new MagnitudeFilter(0.0, 3.0);
+        Location location = new Location(36.1314 ,-95.9372);
+        Filter distFilter = new DistanceFilter(location, 10000000);
+        Filter prFilter = new PhraseFilter("any", "Ca");
+        
+        maf.addFilter(magFilter);
+        maf.addFilter(distFilter);
+        maf.addFilter(prFilter);
+        
+        //Now we will apply all the filters to our list
+        list = filter(list, maf);
+        
+        //Print our list
+        for(QuakeEntry qe : list){
+            System.out.println(qe);
+        }
     }
 
     public void createCSV() {

@@ -9,10 +9,12 @@ public class MagnitudeFilter implements Filter{
     
     private double minMag;
     private double maxMag;
+    private String name;
     
     public MagnitudeFilter(double minMag, double maxMag){
         this.minMag = minMag;
         this.maxMag = maxMag;
+        this.name = "Magnitude";
     }
     
     @Override
@@ -22,6 +24,11 @@ public class MagnitudeFilter implements Filter{
         }else{
             return false;
         }
+    }
+    
+    @Override
+    public String getName(){
+        return name;
     }
     
 

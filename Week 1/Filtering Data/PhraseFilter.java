@@ -8,10 +8,12 @@
 public class PhraseFilter implements Filter{
     private String typeOfRequest;
     private String phraseToSearch;
+    private String name;
     
     public PhraseFilter(String typeOfRequest, String phraseToSearch){
         this.typeOfRequest = typeOfRequest;
         this.phraseToSearch = phraseToSearch;
+        this.name = "Phrase";
     }
     
     @Override
@@ -29,6 +31,11 @@ public class PhraseFilter implements Filter{
         else{
             return false;
         }
+    }
+    
+    @Override
+    public String getName(){
+        return name;
     }
 
 }

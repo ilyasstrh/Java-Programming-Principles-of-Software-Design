@@ -19,10 +19,10 @@ public class PhraseFilter implements Filter{
     @Override
     public  boolean satisfies(QuakeEntry qe){
         String title = qe.getInfo();
-        if(typeOfRequest.equals("start") && title.contains(phraseToSearch)){
+        if(typeOfRequest.equals("start") && title.startsWith(phraseToSearch)){
             return true;
         }
-        else if(typeOfRequest.equals("end") && title.contains(phraseToSearch)){
+        else if(typeOfRequest.equals("end") && title.endsWith(phraseToSearch)){
             return true;
         }
         else if(typeOfRequest.equals("any") && title.contains(phraseToSearch)){

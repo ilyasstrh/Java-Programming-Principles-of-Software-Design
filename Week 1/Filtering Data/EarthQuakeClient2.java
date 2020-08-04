@@ -20,32 +20,35 @@ public class EarthQuakeClient2 {
     public void quakesWithFilter() { 
         EarthQuakeParser parser = new EarthQuakeParser(); 
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
-        String source = "data/nov20quakedatasmall.atom";
+        String source = "data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);         
         System.out.println("read data for "+list.size()+" quakes");
-        /*
-        Filter f = new MagnitudeFilter(4.0, 5.0); 
-        ArrayList<QuakeEntry> m7  = filter(list, f);
-        //new filter
-        f = new DepthFilter(-35000.0, -12000.0);
-        m7 = filter(m7, f); // filter by depth
-        */
-        Location location = new Location(35.42 ,139.43);
-        Filter f = new DistanceFilter(location, 10000000.00); 
-        ArrayList<QuakeEntry> m7  = filter(list, f);
-        //new filter
-        f = new PhraseFilter("end", "Japan");
-        m7 = filter(m7, f); // filter by depth
        
-        
+        Filter f = new MagnitudeFilter(3.4, 4.5); 
+        ArrayList<QuakeEntry> m7  = filter(list, f);
+        //new filter
+        f = new DepthFilter(-55000.0, -20000.0);
+        m7 = filter(m7, f); // filter by depth
+         /*
+        Location location = new Location(39.7392 , -104.9903);
+        Filter f = new DistanceFilter(location, 1000000.00); 
+        ArrayList<QuakeEntry> m7  = filter(list, f);
+        //new filter
+        f = new PhraseFilter("end", "a");
+        m7 = filter(m7, f); // filter by phrase
+       */
+        int count =0;
         for (QuakeEntry qe: m7) { 
             System.out.println(qe);
-        } 
+            count++;
+        }
+        
+        System.out.println("result: "+count);
     }
     
     public void testMatchAllFilter(){
         EarthQuakeParser parser = new EarthQuakeParser(); 
-        String source = "data/nov20quakedatasmall.atom";
+        String source = "data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);         
         System.out.println("read data for "+list.size()+" quakes");
         /*
@@ -54,9 +57,9 @@ public class EarthQuakeClient2 {
         }
         */
         MatchAllFilter maf = new MatchAllFilter();
-        Filter magFilter = new MagnitudeFilter(0.0, 2.0);
-        Filter depFilter = new DepthFilter(-100000.0, -10000.0);
-        Filter prFilter = new PhraseFilter("any", "a");
+        Filter magFilter = new MagnitudeFilter(1.0, 4.0);
+        Filter depFilter = new DepthFilter(-180000.0, -30000.0);
+        Filter prFilter = new PhraseFilter("any", "o");
         
         maf.addFilter(magFilter);
         maf.addFilter(depFilter);
@@ -65,26 +68,30 @@ public class EarthQuakeClient2 {
         //Now we will apply all the filters to our list
         list = filter(list, maf);
         
+        //count the results
+        int count = 0;
         //Print our list
         for(QuakeEntry qe : list){
             System.out.println(qe);
+            count++;
         }
         
         //print out all the Filter names used. 
         System.out.println("Filters used are: " +maf.getName());
+        System.out.println("result: "+count);
     }
     
     public void testMatchAllFilter2(){
         EarthQuakeParser parser = new EarthQuakeParser(); 
-        String source = "data/nov20quakedatasmall.atom";
+        String source = "data/nov20quakedata.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);         
         System.out.println("read data for "+list.size()+" quakes");
 
         MatchAllFilter maf = new MatchAllFilter();
-        Filter magFilter = new MagnitudeFilter(0.0, 3.0);
-        Location location = new Location(36.1314 ,-95.9372);
-        Filter distFilter = new DistanceFilter(location, 10000000);
-        Filter prFilter = new PhraseFilter("any", "Ca");
+        Filter magFilter = new MagnitudeFilter(0.0, 5.0);
+        Location location = new Location(55.7308 ,9.1153);
+        Filter distFilter = new DistanceFilter(location, 3000000);
+        Filter prFilter = new PhraseFilter("any", "e");
         
         maf.addFilter(magFilter);
         maf.addFilter(distFilter);
@@ -92,11 +99,14 @@ public class EarthQuakeClient2 {
         
         //Now we will apply all the filters to our list
         list = filter(list, maf);
-        
+                //count the results
+        int count = 0;
         //Print our list
         for(QuakeEntry qe : list){
             System.out.println(qe);
+            count++;
         }
+        System.out.println("result: "+count);
     }
 
     public void createCSV() {

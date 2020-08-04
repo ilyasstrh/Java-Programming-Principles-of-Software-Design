@@ -13,3 +13,5 @@ Solve real world problems with Java using multiple classes. Learn how to create 
 8. Appropriately hide implementation decisions so they are not visible in public methods; and
 9. Recognize the limitations of algorithms and Java programs in solving problems.
 10. Recognize standard Java classes and idioms including exception-handling, static methods, java.net, and java.io packages.
+
+Link to the course: https://www.coursera.org/learn/java-programming-design-principles

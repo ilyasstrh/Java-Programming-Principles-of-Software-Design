@@ -50,7 +50,7 @@ public class QuakeSortInPlace {
     
     public void sortByLargestDepth(ArrayList<QuakeEntry> in){
         int passes = 0;
-        for(int i=0; i < 70; i++){
+        for(int i=0; i < 50; i++){
             int max = getLargestDepth(in, i);
             QuakeEntry current = in.get(i);
             QuakeEntry maxQ = in.get(max);
@@ -134,9 +134,9 @@ public class QuakeSortInPlace {
        
         System.out.println("read data for "+list.size()+" quakes");    
         //sortByMagnitude(list);
-        //sortByLargestDepth(list);
+        sortByLargestDepth(list);
         //sortByMagnitudeWithBubbleSort(list);
-        sortByMagnitudeWithBubbleSortWithCheck(list);
+        //sortByMagnitudeWithBubbleSortWithCheck(list);
         //sortByMagnitudeWithCheck(list);
         
         /*

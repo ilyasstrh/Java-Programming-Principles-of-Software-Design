@@ -23,7 +23,7 @@ public class EfficientMarkovModel extends AbstractMarkovModel {
     public void setTraining(String s){
         myText = s.trim();
         buildMap();
-        //printHashMapInfo();
+        printHashMapInfo();
     }
 
     public void setModel(int model){
@@ -66,7 +66,7 @@ public class EfficientMarkovModel extends AbstractMarkovModel {
             }
         }
     }
-/*
+
     public void printHashMapInfo() {        
         System.out.println("Number of keys: " + hashMap.size());
         
@@ -88,7 +88,7 @@ public class EfficientMarkovModel extends AbstractMarkovModel {
         
         System.out.println("\n");
     }
-    */
+   
     public ArrayList<String> getFollows(String key) {
         return hashMap.get(key);
     }

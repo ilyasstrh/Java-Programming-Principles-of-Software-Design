@@ -48,11 +48,14 @@ public class MarkovRunnerWithInterface {
 
     }
     public void testHashMap(){
-        String st = "yes­this­is­a­thin­pretty­pink­thistle";
-        int size = 50;
-        int seed = 42;
+        //String st = "yes­this­is­a­thin­pretty­pink­thistle";
+        FileResource fr = new FileResource();
+        String st = fr.asString();
+        st = st.replace('\n', ' ');
+        int size = 200;
+        int seed = 615;
 
-        EfficientMarkovModel ef = new EfficientMarkovModel(2);
+        EfficientMarkovModel ef = new EfficientMarkovModel(5);
         ef.toString();
         runModel(ef, st, size, seed);
     }

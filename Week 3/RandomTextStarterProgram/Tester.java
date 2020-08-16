@@ -20,6 +20,6 @@ public class Tester {
 		MarkovOne markov = new MarkovOne();
 		//markov.setRandom(42);
 		markov.setTraining(st);
-		System.out.println(markov.getFollows("t").size());
+		System.out.println(markov.getFollows("th").size());
     }
 }
